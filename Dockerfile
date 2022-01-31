@@ -1,5 +1,5 @@
 # base
-FROM docker:20.10
+FROM ubuntu:18.04
 
 # set the github runner version
 ARG RUNNER_VERSION="2.286.1"
@@ -16,6 +16,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
   && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
   && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+
+RUN curl -fsSL https://get.docker.com | sh
 
 # install some additional dependencies
 RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
