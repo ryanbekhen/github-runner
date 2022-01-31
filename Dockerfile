@@ -1,5 +1,5 @@
 # base
-FROM ubuntu:18.04
+FROM docker:20.10
 
 # set the github runner version
 ARG RUNNER_VERSION="2.286.1"
